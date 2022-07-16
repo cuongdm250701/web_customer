@@ -20,13 +20,12 @@ function BookingRoom(props) {
     setLoading(true)
     try {
       const params = {
-        customer_id: '',
         status: '',
         page: page,
       }
       const res = await orderApi.listOrder(params)
       setListOrder(res.data)
-      setPaging(res.paging)
+      setPaging(res.pagging)
       setLoading(false)
     } catch (err) {
       swal('Thất bại', `${err.msg}`, 'error')
@@ -53,7 +52,7 @@ function BookingRoom(props) {
         {isLoading && <Loading />}
         <div className="row" style={{ alignItems: 'center', marginBottom: '2rem' }}>
           <span>
-            <h4 className="m-0 ml-2">QUẢN LÝ ĐẶT PHÒNG</h4>
+            <h4 className="m-0 ml-2">LỊCH SỬ ĐẶT TOUR</h4>
           </span>
         </div>
         <>
@@ -62,7 +61,7 @@ function BookingRoom(props) {
               <thead style={{ color: '#0ABE35', backgroundColor: '#eeeeee' }}>
                 <tr>
                   <th>STT</th>
-                  <th>Tên căn</th>
+                  <th>Địa điểm</th>
                   <th>{STRING.zone}</th>
                   {/* <th>{STRING.tourCode}</th> */}
                   <th>{STRING.startDate}</th>
@@ -81,13 +80,13 @@ function BookingRoom(props) {
                       key={key}
                     >
                       <td>{key + 1 + (paging.page - 1) * 12}</td>
-                      <td>{value?.service_name || 'Chưa cập nhật'}</td>
-                      <td>{value?.region_name}</td>
+                      <td>{value?.name || 'Chưa cập nhật'}</td>
+                      <td>{value?.address}</td>
                       {/* <td>{value?.service_code}</td> */}
                       <td>{moment(value?.checkin_at, 'YYYY/MM/DD').format('DD/MM/YYYY')}</td>
-                      <td>{moment(value?.checkout_at, 'YYYY/MM/DD').format('DD/MM/YYYY')}</td>
+                      <td>{moment(value?.checkin_out, 'YYYY/MM/DD').format('DD/MM/YYYY')}</td>
                       <td>Chưa cập nhật</td>
-                      <td>{value?.adult + value?.children}</td>
+                      <td>{value?.amount_people}</td>
                       <td>{findStatusBooking(value?.status)}</td>
                     </tr>
                   ))

@@ -7,6 +7,6 @@ export const createFormData = (dataObject) => {
   keys.forEach((key) => {
     formdata.append(key, dataObject[key])
   })
-
+  console.log('formdata', formdata)
   return formdata
 }

@@ -11,7 +11,7 @@ export const Pagi = (props) => {
         hideDisabled
         activePage={Number(paging?.page)}
         itemsCountPerPage={paging?.limit}
-        totalItemsCount={paging?.count || 0}
+        totalItemsCount={paging?.totalItemCount || 0}
         pageRangeDisplayed={5}
         hideNavigation
         onChange={(page) => props.handlePageChange(page)}

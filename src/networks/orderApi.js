@@ -7,13 +7,13 @@ const orderApi = {
     return ApiClientV1.post(Url.createOrder, payload)
   },
   listOrder: (payload) => {
-    return ApiClient.get(Url.listOrder, payload)
+    return ApiClientV1.get(Url.listOrder, payload)
   },
   orderDetail: (payload) => {
-    return ApiClient.get(Url.orderDetail, payload)
+    return ApiClientV1.get(Url.orderDetail, payload)
   },
-  createTransaction: (payload) => {
-    return ApiClient.post(Url.createTransaction, payload)
+  updateTransaction: (payload) => {
+    return ApiClientV1.put(Url.updateTransaction, payload)
   },
   orderCustomer: (payload) => {
     return ApiClient.post(Url.orderCustomer, payload)
