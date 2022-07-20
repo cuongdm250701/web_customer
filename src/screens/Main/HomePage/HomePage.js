@@ -23,10 +23,26 @@ function HomePage(props) {
   const [locations, setLocations] = useState([])
   const [banners, setBanners] = useState([])
   const [toursFavourite, setToursFavourite] = useState([])
-  const [reviews, setReviews] = useState([])
   const [cates, setCates] = useState([])
   const isLogin = Cookie.get('SESSION_ID')
   const history = useHistory()
+  const [reviews, setReviews] = useState([
+    {
+      id: 1,
+      image: 'http://ohotour.oss-ap-southeast-1.aliyuncs.com/image/ba21a120e00df334354c5354a7d7f943.jpeg',
+      title: 'DỊP LỄ 30/4 KHIÊN NGAY COMBO DU LỊCH ĐẢO LÝ SƠN 2N1Đ GIÁ CHỈ 799.000Đ',
+    },
+    {
+      id: 2,
+      image: 'http://ohotour.oss-ap-southeast-1.aliyuncs.com/image/4c7b15dd6c6b60ab29c76422fd71ea68.jpeg',
+      title: 'TOUR DU LỊCH HUẾ – ĐÀ NẴNG- SƠN TRÀ- NGŨ HÀNH SƠN- HỘI AN – BÀ NÀ HILL 3N2Đ',
+    },
+    {
+      id: 3,
+      image: 'http://ohotour.oss-ap-southeast-1.aliyuncs.com/image/40e7ecef337d6d8eb720dfff0d4f5b47.jpeg',
+      title: 'Travel Bot',
+    },
+  ])
 
   const getListLocation = async () => {
     setLoading(true)
@@ -44,6 +60,7 @@ function HomePage(props) {
     setLoading(true)
     try {
       const res = await newsApi.home({ limit: '' })
+      console.log('res home', res)
       setBanners(res.data[0])
       setToursFavourite(res.data[1])
       setReviews(res.data[2])
@@ -68,7 +85,7 @@ function HomePage(props) {
 
   useEffect(() => {
     getListLocation()
-    getHomeData()
+    // getHomeData()
     getListCate()
     window.scrollTo(0, 0)
   }, [])
@@ -76,8 +93,8 @@ function HomePage(props) {
   const getReviewImages = () => {
     let reviewImages = []
     const temp =
-      reviews?.news?.length > 0 &&
-      reviews?.news?.map((value) => {
+      reviews?.length > 0 &&
+      reviews?.map((value) => {
         reviewImages.push({ url: value.image, id: value.id, title: value.title })
       })
 

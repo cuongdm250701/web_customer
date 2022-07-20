@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, Redirect } from 'react-router-dom'
-import logo from '../../../assets/logo.png'
+import logo from '../../../assets/logo_1.png'
 import './WrapperAuth.css'
 
 WrapperAuthScreen.propTypes = {}
@@ -14,7 +14,7 @@ function WrapperAuthScreen(props) {
         <div className="contents">
           <div style={{ position: 'absolute', marginTop: 25, paddingLeft: 140 }}>
             <Link to="/">
-              <img src={logo} width="350" height="auto" className="logo-content"/>
+              <img src={logo} width="300" height="auto" className="logo-content" />
             </Link>
           </div>
           <div className="container float-right">

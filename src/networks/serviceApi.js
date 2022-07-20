@@ -16,10 +16,10 @@ const serviceApi = {
     return ApiClientV1.get(Url.listCate, payload)
   },
   likeService: (payload) => {
-    return ApiClient.post(Url.likeService, payload)
+    return ApiClientV1.post(Url.likeService, payload)
   },
   listServiceLiked: (payload) => {
-    return ApiClient.get(Url.listServiceLiked, payload)
+    return ApiClientV1.get(Url.listServiceLiked, payload)
   },
 }
 

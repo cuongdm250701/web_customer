@@ -32,12 +32,10 @@ import { Button, FormControl, Modal, Table } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { useHistory, useParams } from 'react-router-dom'
 import swal from 'sweetalert'
-import { CountDownTime } from '../../../../components/CountDown'
-import { ModalDetailCustomer } from './ModalOrderCustomer'
+
 import { Tabs } from 'antd'
-import { ErrorMessage } from '@hookform/error-message'
+
 import QRCode from 'qrcode.react'
-import FingerIcon from '../../../../assets/finger_icon.svg'
 
 const { TabPane } = Tabs
 
@@ -201,6 +199,22 @@ function BookingRoomDetail(props) {
                 VND
               </span>
 
+              <br />
+              <label className="mt-2">Số tiền đã cọc: </label>
+              <span className="ml-2">
+                {Number(orderDetail?.deposited)?.toLocaleString('vi', {
+                  currency: 'VND',
+                }) || 'Chưa cập nhật'}{' '}
+                VND
+              </span>
+              <br />
+              <label className="mt-2">Số tiền còn lại:</label>
+              <span className="ml-2">
+                {Number(orderDetail?.price - orderDetail?.deposited)?.toLocaleString('vi', {
+                  currency: 'VND',
+                }) || 'Chưa cập nhật'}{' '}
+                VND
+              </span>
               <br />
               <label className="mt-2">Ảnh chuyển khoản</label>
               <br />

@@ -13,7 +13,7 @@ const Url = {
   orderDetail: 'order//order-detail',
   updateTransaction: 'order/update-transaction',
   orderCustomer: 'order/orderCustomer',
-  customerUpdate: 'customer/update',
+  customerUpdate: 'user/updateMe',
   uploadAvatar: 'user/uploadAvatar',
   userReferred: 'user/referred',
   updateIsRead: 'user/updateIsRead',

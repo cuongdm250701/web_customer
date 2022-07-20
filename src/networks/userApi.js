@@ -10,7 +10,7 @@ const userApi = {
     return ApiClientV1.post(Url.createUser, payload)
   },
   updateUser: (payload) => {
-    return ApiClient.post(Url.customerUpdate, payload)
+    return ApiClientV1.put(Url.customerUpdate, payload)
   },
   uploadAvatar: (payload) => {
     return ApiClient.post(Url.uploadAvatar, payload)
@@ -28,10 +28,10 @@ const userApi = {
     return ApiClient.post(Url.createNoti, payload)
   },
   forgotPassword: (payload) => {
-    return ApiClient.post(Url.forgotPassword, payload)
+    return ApiClientV1.post(Url.forgotPassword, payload)
   },
   changePassword: (payload) => {
-    return ApiClient.post(Url.changePassword, payload)
+    return ApiClientV1.put(Url.changePassword, payload)
   },
   getConfig: () => {
     return ApiClient.get(Url.getConfig)

@@ -53,9 +53,9 @@ export default function ModalChangePassword(props) {
         <form action="#" method="post" onSubmit={handleSubmit(handleChangePassword)}>
           <DialogContent>
             <div className="form-group first">
-              <label htmlFor="old_pass">Mật khẩu hiện tại</label>
+              <label htmlFor="old_password">Mật khẩu hiện tại</label>
               <Form
-                name="old_pass"
+                name="old_password"
                 errors={errors}
                 register={register}
                 validation={{
@@ -67,9 +67,9 @@ export default function ModalChangePassword(props) {
             </div>
 
             <div className="form-group first">
-              <label htmlFor="new_pass">Mật khẩu mới</label>
+              <label htmlFor="new_password">Mật khẩu mới</label>
               <Form
-                name="new_pass"
+                name="new_password"
                 errors={errors}
                 register={register}
                 validation={{
@@ -84,7 +84,9 @@ export default function ModalChangePassword(props) {
             <Button onClick={handleCloseModalChangePassword} style={{ color: 'red' }}>
               Đóng
             </Button>
-            <Button type="submit" style={{ color: '#0abe35' }}>Xác nhận</Button>
+            <Button type="submit" style={{ color: '#0abe35' }}>
+              Xác nhận
+            </Button>
           </DialogActions>
         </form>
       </Dialog>
