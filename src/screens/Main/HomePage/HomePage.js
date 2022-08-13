@@ -84,7 +84,7 @@ function HomePage(props) {
   }
 
   useEffect(() => {
-    getListLocation()
+    // getListLocation()
     // getHomeData()
     getListCate()
     window.scrollTo(0, 0)

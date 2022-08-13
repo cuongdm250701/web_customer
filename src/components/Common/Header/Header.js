@@ -45,58 +45,6 @@ function Header(props) {
   useEffect(() => {
     if (isLogin) {
       getUserInfo()
-      // getListUserNotif()
-      // var socket = io(SOCKET_URL, {
-      //   transports: ['websocket'],
-      // })
-      // socket.on('newOder', (value) => {
-      //   console.log(value)
-      //   const user = JSON.parse(localStorage.getItem('user'))
-      //   console.log(user)
-      //   if (value.type != CHAT_STATUS.CUSTOMER_CHAT && value?.key_chat == user?.key_chat && user) {
-      //     getListUserNotif()
-      //     value.type != CHAT_STATUS.SALE_LEADER_CONFIRMED && soundPlay(require('@assets/sound/notification.mp3'))
-      //     notifySuccess(value.content)
-      //     // notification(value.content)
-      //   } else if (value.type == CHAT_STATUS.SALE_LEADER_CONFIRMED && value.user_id == user.id) {
-      //     getListUserNotif()
-      //     soundPlay(require('@assets/sound/notification.mp3'))
-      //     notifySuccess(value.content)
-      //   } else if (value.type == CHAT_STATUS.ORDER_PRICE && value.user_id == user.id) {
-      //     location.pathname?.search(ROUTER.BOOKING_DETAIL) !== -1 && window.location.reload()
-      //     getListUserNotif()
-      //     soundPlay(require('@assets/sound/notification.mp3'))
-      //     notifySuccess(value.content)
-      //   } else if (value.type == CHAT_STATUS.CHECK_IN_OR_CHECK_OUT && value.user_id == user.id) {
-      //     getListUserNotif()
-      //     location.pathname?.search(ROUTER.BOOKING_DETAIL) !== -1 && window.location.reload()
-      //     soundPlay(require('@assets/sound/notification.mp3'))
-      //     notifySuccess(value.content)
-      //   } else if (value.type == CHAT_STATUS.KEEP_ORDER && value.user_id == user.id) {
-      //     getListUserNotif()
-      //     location.pathname?.search(ROUTER.BOOKING_DETAIL) !== -1 && window.location.reload()
-      //     soundPlay(require('@assets/sound/notification.mp3'))
-      //     // notifySuccess(value.content)
-      //   } else if (value.type == CHAT_STATUS.CAN_CHECK_IN && value.user_id == user.id) {
-      //     getListUserNotif()
-      //     soundPlay(require('@assets/sound/notification.mp3'))
-      //     location.pathname?.search(ROUTER.BOOKING_DETAIL) !== -1 && window.location.reload()
-      //     notifySuccess(value.content)
-      //   } else if (value.type == CHAT_STATUS.CAN_DESPOSIT && value.user_id == user.id) {
-      //     getListUserNotif()
-      //     soundPlay(require('@assets/sound/notification.mp3'))
-      //     location.pathname?.search(ROUTER.BOOKING_DETAIL) !== -1 && window.location.reload()
-      //     notifySuccess(value.content)
-      //   } else if (value.type == CHAT_STATUS.UPDATE_PRICE && value.user_id == user.id) {
-      //     getListUserNotif()
-      //     soundPlay(require('@assets/sound/notification.mp3'))
-      //     location.pathname?.search(ROUTER.BOOKING_DETAIL) !== -1 && window.location.reload()
-      //   } else if (value.type == CHAT_STATUS.CANCEL && value.user_id == user.id) {
-      //     getListUserNotif()
-      //     soundPlay(require('@assets/sound/notification.mp3'))
-      //     location.pathname?.search(ROUTER.BOOKING_DETAIL) !== -1 && window.location.reload()
-      //   }
-      // })
     }
   }, [location])
 
@@ -124,7 +72,6 @@ function Header(props) {
       swal('Thất bại', `${err.msg}`, 'error')
     }
   }
-
   const readNoti = async (noti) => {
     try {
       const res = await userApi.updateIsRead({ id: noti.id })
@@ -159,6 +106,26 @@ function Header(props) {
       </Menu.Item>
       <Menu.Item className="menu-item-avatar" onClick={() => handleOpenModalChangePassword()}>
         Đổi mật khẩu
+      </Menu.Item>
+      <Menu.Item className="menu-item-logout" onClick={handleOpenModalSingout}>
+        Đăng xuất
+      </Menu.Item>
+    </Menu>
+  )
+
+  const menuAdmin = (
+    <Menu className="menu-avatar">
+      <Menu.Item className="menu-item-avatar" onClick={() => history.push(ROUTER.LIST_CUSTOMER)}>
+        Quản lý thông tin khách hàng
+      </Menu.Item>
+      <Menu.Item className="menu-item-avatar" onClick={() => history.push(ROUTER.BOOKING_LIST)}>
+        Quản lý danh sách đặt phòng
+      </Menu.Item>
+      <Menu.Item className="menu-item-avatar" onClick={() => history.push(ROUTER.FAVOURITE_LIST)}>
+        Quản lý thông tin tour
+      </Menu.Item>
+      <Menu.Item className="menu-item-avatar" onClick={() => history.push(ROUTER.TOUR_CATEGORY)}>
+        Quản lý danh mục
       </Menu.Item>
       <Menu.Item className="menu-item-logout" onClick={handleOpenModalSingout}>
         Đăng xuất
@@ -306,7 +273,11 @@ function Header(props) {
                               style={{ cursor: 'pointer', alignItems: 'center' }}
                               // onClick={() => history.push(ROUTER.USER_INFO)}
                             >
-                              <Dropdown overlay={menu} placement="bottomRight" arrow>
+                              <Dropdown
+                                overlay={userInfo.role_id === 1 ? menuAdmin : menu}
+                                placement="bottomRight"
+                                arrow
+                              >
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                   <h6 style={{ margin: 0, marginRight: 5 }}>{userInfo?.full_name}</h6>
                                   <Avatar

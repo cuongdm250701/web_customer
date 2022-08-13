@@ -17,6 +17,8 @@ import {
 } from '@screens/index'
 import { ROUTER } from '@constants/Constant'
 import BookingRoomDetail from '../screens/Main/UserPage/UserPageComponent/BookingRoomDetail'
+import ListCustomer from '../screens/Main/UserPage/UserPageComponent/ListCustomer'
+import TourCategory from '../screens/Main/TourPage/TourComponent/TourCategory'
 
 const AppNavigator = () => {
   return (
@@ -40,6 +42,8 @@ const AppNavigator = () => {
           <Route path={ROUTER.FAVOURITE_LIST} exact component={UserPage} />
           <Route path={ROUTER.BOOKING_DETAIL + '/:id'} exact component={BookingRoomDetail} />
           <Route path={ROUTER.RESULT_SEARCH} exact component={ResultSearchPage} />
+          <Route path={ROUTER.LIST_CUSTOMER} exact component={ListCustomer} />
+          <Route path={ROUTER.TOUR_CATEGORY} exact component={TourCategory} />
         </Switch>
         <Footer />
       </Router>

@@ -788,7 +788,7 @@ function Chat() {
               {countUnReadMessage(roomList.concat(roomAdmin))}
             </Badge>
           )}
-          <Popover
+          {/* <Popover
             content={
               <div>
                 <div>Chat ngay với chúng tôi để nhận những tư vấn</div>
@@ -805,7 +805,7 @@ function Chat() {
             // onVisibleChange={this.handleVisibleChange}
           >
             <i className="fab fa-facebook-messenger fa-3x bg-success btn-messs icon-chat-desktop"></i>
-          </Popover>
+          </Popover> */}
         </label>
         {/* <div className="intro-chat-mobile">
           <Popover

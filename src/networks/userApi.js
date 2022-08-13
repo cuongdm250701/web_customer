@@ -36,6 +36,12 @@ const userApi = {
   getConfig: () => {
     return ApiClient.get(Url.getConfig)
   },
+  getListCustomer: (payload) => {
+    return ApiClientV1.get(Url.listCustomer, payload)
+  },
+  deleteCustomer: (payload) => {
+    return ApiClientV1.delete(Url.deleteCustomer, payload)
+  },
 }
 
 export default userApi

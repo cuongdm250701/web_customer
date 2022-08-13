@@ -21,6 +21,9 @@ const serviceApi = {
   listServiceLiked: (payload) => {
     return ApiClientV1.get(Url.listServiceLiked, payload)
   },
+  deleteCategory: (payload) => {
+    return ApiClientV1.delete(Url.deleteCategory, payload)
+  },
 }
 
 export default serviceApi

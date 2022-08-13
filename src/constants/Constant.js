@@ -14,6 +14,8 @@ const ROUTER = {
   BOOKING_DETAIL: '/chi-tiet-phong-dat',
   FAVOURITE_LIST: '/danh-sach-yeu-thich',
   RESULT_SEARCH: '/ket-qua-tim-kiem',
+  LIST_CUSTOMER: '/danh-sach-khach-hang',
+  TOUR_CATEGORY: '/danh-sach-danh-muc',
 }
 
 const STRING = {
