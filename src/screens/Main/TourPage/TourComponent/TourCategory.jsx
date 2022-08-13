@@ -11,6 +11,8 @@ import swal from 'sweetalert'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPenAlt } from '@fortawesome/free-solid-svg-icons'
 import ModalDeleteCate from '../../../../components/ModalDeleteCate'
+import { Button } from 'react-bootstrap'
+import ModalCreateCategory from '../../../../components/ModalCreateCategory'
 
 function TourCategory(props) {
   const [isLoading, setLoading] = useState(false)
@@ -18,6 +20,7 @@ function TourCategory(props) {
   const [paging, setPaging] = useState({})
   const [currentPage, setCurrentPage] = useState(1)
   const [openModalDelete, setOpenModalDelete] = useState(false)
+  const [opentModalCreateCate, setOpenModalCreateCate] = useState(false)
   const [id, setId] = useState()
   const history = useHistory()
 
@@ -51,6 +54,14 @@ function TourCategory(props) {
     setOpenModalDelete(false)
   }
 
+  const handleOpenModalCreateCate = () => {
+    setOpenModalCreateCate(true)
+  }
+
+  const handleCloseModalCreateCate = () => {
+    setOpenModalCreateCate(false)
+  }
+
   useEffect(() => {
     getListCustomer(currentPage)
   }, [])
@@ -65,9 +76,18 @@ function TourCategory(props) {
           handleCloseModalDelete={handleCloseModalDelete}
           handleOpenModalDelete={handleOpenModalDelete}
         />
+
+        <ModalCreateCategory
+          openModalCreateCate={opentModalCreateCate}
+          handleCloseModalCreateCate={handleCloseModalCreateCate}
+          handleOpenModalCreateCate={handleOpenModalCreateCate}
+        />
         <div className="row" style={{ alignItems: 'center', marginBottom: '2rem' }}>
           <span>
             <h4 className="m-0 ml-5">Danh sách danh mục</h4>
+            <Button onClick={handleOpenModalCreateCate} variant="success" className="m-0 ml-5">
+              Thêm mới
+            </Button>
           </span>
         </div>
         <>
@@ -86,20 +106,20 @@ function TourCategory(props) {
               <tbody>
                 {listCategory?.length > 0 ? (
                   listCategory?.map((value, key) => (
-                    <tr
-                      style={{ cursor: 'pointer' }}
-                      key={key}
-                      //   onClick={() => history.push(`${ROUTER.BOOKING_DETAIL}/${value.id}`)}
-                    >
+                    <tr style={{ cursor: 'pointer' }} key={key}>
                       <td>{key + 1 + (paging.page - 1) * 12}</td>
                       <td>{value?.name || 'Chưa cập nhật'}</td>
                       <td>{value?.is_active === 1 ? 'Đang hoạt động' : 'Đã xóa'}</td>
                       <td>{value?.create_by}</td>
                       <td>{moment(value?.created_at, 'YYYY/MM/DD').format('DD/MM/YYYY')}</td>
                       {value?.is_active === 1 ? (
-                        <td onClick={() => handleOpenModalDelete(value?.id)}>
-                          <FontAwesomeIcon icon={faPenAlt} className="mr-2" />
-                          <FontAwesomeIcon icon={faTrashAlt} />
+                        <td>
+                          <FontAwesomeIcon
+                            onClick={() => history.push(`${ROUTER.CATEGORY_DETAIL}/${value.id}`)}
+                            icon={faPenAlt}
+                            className="mr-2"
+                          />
+                          <FontAwesomeIcon onClick={() => handleOpenModalDelete(value?.id)} icon={faTrashAlt} />
                         </td>
                       ) : (
                         <td></td>

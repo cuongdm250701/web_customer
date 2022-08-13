@@ -24,6 +24,15 @@ const serviceApi = {
   deleteCategory: (payload) => {
     return ApiClientV1.delete(Url.deleteCategory, payload)
   },
+  categoryDetail: (payload) => {
+    return ApiClientV1.get(Url.categoryDetail, payload)
+  },
+  updateCategory: (payload) => {
+    return ApiClientV1.put(Url.updateCategory, payload)
+  },
+  createCategory: (payload) => {
+    return ApiClientV1.post(Url.createCategory, payload)
+  },
 }
 
 export default serviceApi

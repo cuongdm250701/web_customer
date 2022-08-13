@@ -34,6 +34,9 @@ const Url = {
   listCustomer: 'user/list',
   deleteCustomer: 'user/delete',
   deleteCategory: 'service_category/delete',
+  categoryDetail: 'service_category/detail',
+  updateCategory: 'service_category/update',
+  createCategory: 'service_category/create',
 }
 
 export default Url

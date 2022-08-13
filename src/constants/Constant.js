@@ -16,6 +16,7 @@ const ROUTER = {
   RESULT_SEARCH: '/ket-qua-tim-kiem',
   LIST_CUSTOMER: '/danh-sach-khach-hang',
   TOUR_CATEGORY: '/danh-sach-danh-muc',
+  CATEGORY_DETAIL: '/chi-tiet-danh-muc',
 }
 
 const STRING = {

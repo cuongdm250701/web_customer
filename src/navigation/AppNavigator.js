@@ -19,6 +19,7 @@ import { ROUTER } from '@constants/Constant'
 import BookingRoomDetail from '../screens/Main/UserPage/UserPageComponent/BookingRoomDetail'
 import ListCustomer from '../screens/Main/UserPage/UserPageComponent/ListCustomer'
 import TourCategory from '../screens/Main/TourPage/TourComponent/TourCategory'
+import TourCategoryDetail from '../screens/Main/TourPage/TourComponent/TourCategoryDetail'
 
 const AppNavigator = () => {
   return (
@@ -44,6 +45,7 @@ const AppNavigator = () => {
           <Route path={ROUTER.RESULT_SEARCH} exact component={ResultSearchPage} />
           <Route path={ROUTER.LIST_CUSTOMER} exact component={ListCustomer} />
           <Route path={ROUTER.TOUR_CATEGORY} exact component={TourCategory} />
+          <Route path={ROUTER.CATEGORY_DETAIL + '/:id'} exact component={TourCategoryDetail} />
         </Switch>
         <Footer />
       </Router>
