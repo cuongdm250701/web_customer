@@ -33,6 +33,9 @@ const serviceApi = {
   createCategory: (payload) => {
     return ApiClientV1.post(Url.createCategory, payload)
   },
+  updateService: (payload) => {
+    return ApiClientV1.put(Url.updateService, payload)
+  },
 }
 
 export default serviceApi

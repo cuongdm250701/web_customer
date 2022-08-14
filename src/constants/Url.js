@@ -37,6 +37,7 @@ const Url = {
   categoryDetail: 'service_category/detail',
   updateCategory: 'service_category/update',
   createCategory: 'service_category/create',
+  updateService: 'service/update',
 }
 
 export default Url

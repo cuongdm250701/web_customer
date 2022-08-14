@@ -20,6 +20,8 @@ import BookingRoomDetail from '../screens/Main/UserPage/UserPageComponent/Bookin
 import ListCustomer from '../screens/Main/UserPage/UserPageComponent/ListCustomer'
 import TourCategory from '../screens/Main/TourPage/TourComponent/TourCategory'
 import TourCategoryDetail from '../screens/Main/TourPage/TourComponent/TourCategoryDetail'
+import TourListService from '@screens/Main/TourPage/TourComponent/TourListService'
+import TourDetail from '@screens/Main/TourPage/TourComponent/TourDetail'
 
 const AppNavigator = () => {
   return (
@@ -46,6 +48,8 @@ const AppNavigator = () => {
           <Route path={ROUTER.LIST_CUSTOMER} exact component={ListCustomer} />
           <Route path={ROUTER.TOUR_CATEGORY} exact component={TourCategory} />
           <Route path={ROUTER.CATEGORY_DETAIL + '/:id'} exact component={TourCategoryDetail} />
+          <Route path={ROUTER.TOUR_LIST} exact component={TourListService} />
+          <Route path={ROUTER.TOUR_DETAIL + '/:id'} exact component={TourDetail} />
         </Switch>
         <Footer />
       </Router>
