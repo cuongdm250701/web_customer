@@ -19,6 +19,7 @@ const ROUTER = {
   CATEGORY_DETAIL: '/chi-tiet-danh-muc',
   TOUR_LIST: '/danh-sach-tours',
   TOUR_DETAIL: '/chi-tiet-tours',
+  TOUR_CREATE: '/tao-moi-tour',
 }
 
 const STRING = {

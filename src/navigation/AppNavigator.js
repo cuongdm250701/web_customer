@@ -22,6 +22,7 @@ import TourCategory from '../screens/Main/TourPage/TourComponent/TourCategory'
 import TourCategoryDetail from '../screens/Main/TourPage/TourComponent/TourCategoryDetail'
 import TourListService from '@screens/Main/TourPage/TourComponent/TourListService'
 import TourDetail from '@screens/Main/TourPage/TourComponent/TourDetail'
+import TourCreate from '@screens/Main/TourPage/TourComponent/TourCreate'
 
 const AppNavigator = () => {
   return (
@@ -50,6 +51,7 @@ const AppNavigator = () => {
           <Route path={ROUTER.CATEGORY_DETAIL + '/:id'} exact component={TourCategoryDetail} />
           <Route path={ROUTER.TOUR_LIST} exact component={TourListService} />
           <Route path={ROUTER.TOUR_DETAIL + '/:id'} exact component={TourDetail} />
+          <Route path={ROUTER.TOUR_CREATE} exact component={TourCreate} />
         </Switch>
         <Footer />
       </Router>

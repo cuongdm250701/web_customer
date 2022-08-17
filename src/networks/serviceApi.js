@@ -36,6 +36,9 @@ const serviceApi = {
   updateService: (payload) => {
     return ApiClientV1.put(Url.updateService, payload)
   },
+  createService: (payload) => {
+    return ApiClientV1.post(Url.createService, payload)
+  },
 }
 
 export default serviceApi

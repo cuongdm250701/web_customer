@@ -9,13 +9,14 @@ import moment from 'moment'
 import serviceApi from '@networks/serviceApi'
 import swal from 'sweetalert'
 import Loading from '@components/Loading'
-import ImageUpload from '@components/UploadImage.jsx'
 import { createFormData } from '@utils/createFormData'
 import { formatDateTimeForInput } from '@utils/formatDatePicker'
 import { ACCEPT_TYPE } from '@constants/Constant'
 import { useParams } from 'react-router-dom'
+import { ROUTER } from '@constants/Constant'
+import { useHistory } from 'react-router-dom'
 
-function TourDetail(props) {
+function TourCreate(props) {
   const { register, errors, handleSubmit } = useForm({
     criteriaMode: 'all',
   })
@@ -25,43 +26,29 @@ function TourDetail(props) {
   const [option, setOption] = useState('')
   const [imageAvatarUpload, setImageAvatarUpload] = useState('')
   const [listCategory, setListCategory] = useState([])
-  const params = useParams()
-  const tourId = params.id
   const dateFormat = 'YYYY/MM/DD'
+  const history = useHistory()
 
-  const getServiceDetail = async () => {
-    setLoading(true)
-    try {
-      const params = {
-        id: tourId,
-      }
-      const res = await serviceApi.serviceDetail(params)
-      setService(res.data)
-      setLoading(false)
-    } catch (err) {
-      setLoading(false)
-      swal('Thất bại', `${err.msg}`, 'error')
-    }
-  }
   const getListServiceCategory = async () => {
     try {
       const res = await serviceApi.listCate()
+      console.log('res', res.data)
       setListCategory(res.data)
     } catch (err) {
       swal('Thất bại', `${err.msg}`, 'error')
     }
   }
 
-  const updateTour = async (payload) => {
+  const createTour = async (payload) => {
     setLoading(true)
     try {
-      await serviceApi.updateService(
+      await serviceApi.createService(
         createFormData({
           ...payload,
         })
       )
       setLoading(false)
-      swal('Thành công', 'Lưu thành công', 'success').then(window.location.reload())
+      swal('Thành công', 'Lưu thành công', 'success').then(history.push(ROUTER.TOUR_LIST))
     } catch (err) {
       setLoading(false)
       swal('Thất bại', `${err.msg}`, 'error')
@@ -69,12 +56,12 @@ function TourDetail(props) {
   }
 
   useEffect(() => {
-    getServiceDetail()
     getListServiceCategory()
   }, [])
 
   const onSubmit = (data) => {
-    updateTour({ ...data, id: tourId, service_category_id: service.service_category_id })
+    console.log('data', data)
+    createTour({ ...data, service_category_id: data.category })
   }
 
   const fromTourDetail = () => {
@@ -157,15 +144,8 @@ function TourDetail(props) {
                   })}
                   placeholder="Nhập số người"
                   value={service.people}
-                  // onChange={(e) => setService({ ...service, people: e.target.value })}
+                  onChange={(e) => setService({ ...service, people: e.target.value })}
                 />
-              </div>
-            </div>
-
-            <div className="row mt-4">
-              <div className="col-sm-2 mt-2 p-0">Danh mục *</div>
-              <div className="col-sm-10 p-0">
-                <FormControl type="text" placeholder="Nhập số người" disabled="true" value={service.category_name} />
               </div>
             </div>
 
@@ -191,14 +171,14 @@ function TourDetail(props) {
             </div>
 
             <div className="row mt-4">
-              <div className="col-sm-2 mt-2 p-0">Địa chỉ *</div>
+              <div className="col-sm-2 mt-2 p-0">Địa chỉ</div>
               <div className="col-sm-10 p-0">
                 <FormControl
                   type="text"
                   name="address"
                   placeholder="Nhập địa chỉ"
                   ref={register({
-                    required: 'Vui lòng nhập đầy đủ thông tin',
+                    // required: 'Vui lòng nhập đầy đủ thông tin',
                   })}
                   value={service?.address || ''}
                   onChange={(e) =>
@@ -294,7 +274,7 @@ function TourDetail(props) {
             </div>
             <div className="row mt-4" style={{ display: 'flex', justifyContent: 'center' }}>
               <Button type="submit" variant="success" className="mr-2 mt-2">
-                Lưu thay đổi
+                Thêm Tour
               </Button>
             </div>
           </form>
@@ -315,4 +295,4 @@ function TourDetail(props) {
   )
 }
 
-export default TourDetail
+export default TourCreate

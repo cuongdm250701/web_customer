@@ -22,7 +22,6 @@ function TourListService(props) {
   const [openModalDelete, setOpenModalDelete] = useState(false)
   const [opentModalCreateCate, setOpenModalCreateCate] = useState(false)
   const [id, setId] = useState()
-  console.log('id', id)
   const history = useHistory()
 
   const getListTour = async (page) => {
@@ -56,10 +55,6 @@ function TourListService(props) {
     setOpenModalDelete(false)
   }
 
-  const handleOpenModalCreateCate = () => {
-    setOpenModalCreateCate(true)
-  }
-
   useEffect(() => {
     getListTour(currentPage)
   }, [])
@@ -77,7 +72,7 @@ function TourListService(props) {
         <div className="row" style={{ alignItems: 'center', marginBottom: '2rem' }}>
           <span>
             <h4 className="m-0 ml-5">Danh sách Tour</h4>
-            <Button onClick={handleOpenModalCreateCate} variant="success" className="m-0 ml-5">
+            <Button onClick={() => history.push(ROUTER.TOUR_CREATE)} variant="success" className="m-0 ml-5">
               Thêm mới
             </Button>
           </span>
