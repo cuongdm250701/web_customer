@@ -8,12 +8,19 @@ import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 import swal from 'sweetalert'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt, faPenAlt } from '@fortawesome/free-solid-svg-icons'
+import ModalDeleteCate from '../../../../components/ModalDeleteCate'
+import { Button } from 'react-bootstrap'
+import ModalCreateCategory from '../../../../components/ModalCreateCategory'
 
-function BookingRoom(props) {
+function BookingList(props) {
   const [isLoading, setLoading] = useState(false)
   const [listOrder, setListOrder] = useState([])
   const [paging, setPaging] = useState({})
   const [currentPage, setCurrentPage] = useState(1)
+  const [openModalDelete, setOpenModalDelete] = useState(false)
+  const [id, setId] = useState()
   const history = useHistory()
 
   const getListOrder = async (page) => {
@@ -22,8 +29,9 @@ function BookingRoom(props) {
       const params = {
         status: '',
         page: page,
+        search: '',
       }
-      const res = await orderApi.listOrder(params)
+      const res = await orderApi.listOrderCustomer(params)
       setListOrder(res.data)
       setPaging(res.pagging)
       setLoading(false)
@@ -32,6 +40,19 @@ function BookingRoom(props) {
       setLoading(false)
     }
   }
+
+  const handlePageChange = (page) => {
+    getListOrder(page)
+  }
+
+  const handleOpenModalDelete = (id) => {
+    setId(id)
+    setOpenModalDelete(true)
+  }
+
+  useEffect(() => {
+    getListOrder(currentPage)
+  }, [])
 
   const checkStatusOrder = (status) => {
     let result = ''
@@ -48,60 +69,50 @@ function BookingRoom(props) {
     return result
   }
 
-  const handlePageChange = (page) => {
-    getListOrder(page)
-  }
-
-  useEffect(() => {
-    getListOrder(currentPage)
-  }, [])
-
-  // const findStatusBooking = (id) => {
-  //   const status = ORDER_STATUS_STRING.findIndex((value) => value.value === id)
-  //   return ORDER_STATUS_STRING[status].name
-  // }
-
   return (
     <>
       <div className="tab-detail">
         {isLoading && <Loading />}
         <div className="row" style={{ alignItems: 'center', marginBottom: '2rem' }}>
           <span>
-            <h4 className="m-0 ml-2">LỊCH SỬ ĐẶT TOUR</h4>
+            <h4 className="m-0 ml-5">Danh sách đặt Tour</h4>
+            {/* <Button onClick={() => history.push(ROUTER.TOUR_CREATE)} variant="success" className="m-0 ml-5">
+              Thêm mới
+            </Button> */}
           </span>
         </div>
         <>
-          <div className="row mt-3">
+          <div className="row ml-5 mt-3 mr-5">
             <Table striped hover responsive className="text-center" bordered>
               <thead style={{ color: '#0ABE35', backgroundColor: '#eeeeee' }}>
                 <tr>
                   <th>STT</th>
-                  <th>Địa điểm</th>
-                  <th>{STRING.zone}</th>
-                  {/* <th>{STRING.tourCode}</th> */}
-                  <th>{STRING.startDate}</th>
-                  <th>{STRING.toDate}</th>
-                  <th>{STRING.roomType}</th>
-                  <th>{STRING.people}</th>
-                  <th>{STRING.status}</th>
+                  <th>Tên khách hàng</th>
+                  <th>Số điện thoại</th>
+                  <th>Số lượng người</th>
+                  <th>Ngày khởi hành</th>
+                  <th>Ngày kết thúc</th>
+                  <th>Mã tour</th>
+                  <th>Ngày tạo</th>
+                  <th>Trạng thái</th>
                 </tr>
               </thead>
               <tbody>
                 {listOrder?.length > 0 ? (
                   listOrder?.map((value, key) => (
                     <tr
-                      onClick={() => history.push(`${ROUTER.BOOKING_DETAIL}/${value.id}`)}
                       style={{ cursor: 'pointer' }}
                       key={key}
+                      onClick={() => history.push(`${ROUTER.ORDER_DETAIL}/${value.id}`)}
                     >
                       <td>{key + 1 + (paging.page - 1) * 6}</td>
-                      <td>{value?.name || 'Chưa cập nhật'}</td>
-                      <td>{value?.address}</td>
-                      {/* <td>{value?.service_code}</td> */}
+                      <td>{value?.customer_name || 'Chưa cập nhật'}</td>
+                      <td>{value?.customer_phone || 'Chưa cập nhật'}</td>
+                      <td>{value?.amount_people}</td>
                       <td>{moment(value?.checkin_at, 'YYYY/MM/DD').format('DD/MM/YYYY')}</td>
                       <td>{moment(value?.checkin_out, 'YYYY/MM/DD').format('DD/MM/YYYY')}</td>
-                      <td>Chưa cập nhật</td>
-                      <td>{value?.amount_people}</td>
+                      <td>{value?.code}</td>
+                      <td>{moment(value?.created_at, 'YYYY/MM/DD').format('DD/MM/YYYY')}</td>
                       <td>{checkStatusOrder(value?.status)}</td>
                     </tr>
                   ))
@@ -122,4 +133,4 @@ function BookingRoom(props) {
   )
 }
 
-export default BookingRoom
+export default BookingList

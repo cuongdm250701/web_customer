@@ -118,7 +118,7 @@ function Header(props) {
       <Menu.Item className="menu-item-avatar" onClick={() => history.push(ROUTER.LIST_CUSTOMER)}>
         Quản lý thông tin khách hàng
       </Menu.Item>
-      <Menu.Item className="menu-item-avatar" onClick={() => history.push(ROUTER.BOOKING_LIST)}>
+      <Menu.Item className="menu-item-avatar" onClick={() => history.push(ROUTER.LIST_BOOKING)}>
         Quản lý danh sách đặt phòng
       </Menu.Item>
       <Menu.Item className="menu-item-avatar" onClick={() => history.push(ROUTER.TOUR_LIST)}>

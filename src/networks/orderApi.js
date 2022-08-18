@@ -33,6 +33,15 @@ const orderApi = {
   requestPayment: (payload) => {
     return ApiClient.post(Url.requestPament, payload)
   },
+  listOrderCustomer: (payload) => {
+    return ApiClientV1.get(Url.listOrderCustomer, payload)
+  },
+  orderCustomerDetail: (payload) => {
+    return ApiClientV1.get(Url.orderCustomerDetail, payload)
+  },
+  updateOrder: (payload) => {
+    return ApiClientV1.put(Url.updateOrder, payload)
+  },
 }
 
 export default orderApi

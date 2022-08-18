@@ -20,6 +20,8 @@ const ROUTER = {
   TOUR_LIST: '/danh-sach-tours',
   TOUR_DETAIL: '/chi-tiet-tours',
   TOUR_CREATE: '/tao-moi-tour',
+  LIST_BOOKING: '/danh-sach-dat-tour',
+  ORDER_DETAIL: '/chi-tiet-order',
 }
 
 const STRING = {
@@ -192,6 +194,11 @@ const ORDER_STATUS_STRING = [
   { value: -1, name: 'Đã hủy' },
 ]
 
+const STATUS_TRANSACTION = {
+  PENDING: 1,
+  ACCEPTED: 2,
+  REJECT: 3,
+}
 const TYPE_NOTI = {
   DESPOSIT_SUCCESS: 15,
   CAN_CHECK_IN: 16,
@@ -255,4 +262,5 @@ export {
   CHAT_STATUS,
   TYPE_NOTI,
   PRICE_PEOPLE,
+  STATUS_TRANSACTION,
 }

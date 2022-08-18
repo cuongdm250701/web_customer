@@ -89,7 +89,7 @@ function ListCustomer(props) {
                 {listCustomer?.length > 0 ? (
                   listCustomer?.map((value, key) => (
                     <tr style={{ cursor: 'pointer' }} key={key}>
-                      <td>{key + 1 + (paging.page - 1) * 12}</td>
+                      <td>{key + 1 + (paging.page - 1) * 6}</td>
                       <td>{value?.full_name || 'Chưa cập nhật'}</td>
                       <td>{value?.user_name}</td>
                       <td>{value?.email}</td>

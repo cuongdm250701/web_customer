@@ -94,7 +94,7 @@ function TourListService(props) {
                 {listCategory?.length > 0 ? (
                   listCategory?.map((value, key) => (
                     <tr style={{ cursor: 'pointer' }} key={key}>
-                      <td>{key + 1 + (paging.page - 1) * 12}</td>
+                      <td>{key + 1 + (paging.page - 1) * 6}</td>
                       <td>{value?.name || 'Chưa cập nhật'}</td>
                       <td>{value?.is_active === 1 ? 'Đang hoạt động' : 'Đã xóa'}</td>
                       <td>{value?.category_name}</td>

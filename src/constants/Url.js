@@ -39,6 +39,9 @@ const Url = {
   createCategory: 'service_category/create',
   updateService: 'service/update',
   createService: 'service/create',
+  listOrderCustomer: 'order/list-order',
+  orderCustomerDetail: 'order/order-detail',
+  updateOrder: 'order/update-order',
 }
 
 export default Url
