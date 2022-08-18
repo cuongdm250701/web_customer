@@ -214,6 +214,17 @@ function TourDetailBookingInfo(props) {
                 <label>
                   {amountAdults} {STRING.adults}, {amountChildren} {STRING.children}
                 </label>
+                <p className="m-0 pt-2">Quy định giá:</p>
+                <label>
+                  1 {STRING.adults}:{' '}
+                  {Number(PRICE_PEOPLE.ADULT).toLocaleString('vi', {
+                    currency: 'VND',
+                  }) + ' VNĐ'}{' '}
+                  , 1 {STRING.children}:{' '}
+                  {Number(PRICE_PEOPLE.CHILDREN).toLocaleString('vi', {
+                    currency: 'VND',
+                  }) + ' VNĐ'}{' '}
+                </label>
                 <p className="m-0 pt-4">{STRING.note}</p>
                 <Form.Control
                   as="textarea"
