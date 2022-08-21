@@ -66,7 +66,7 @@ function ListCustomer(props) {
         />
         <div className="row" style={{ alignItems: 'center', marginBottom: '2rem' }}>
           <span>
-            <h4 className="m-0 ml-5">LỊCH SỬ ĐẶT TOUR</h4>
+            <h4 className="m-0 ml-5">Danh sách khách hàng</h4>
           </span>
         </div>
         <>
