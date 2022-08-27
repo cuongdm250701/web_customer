@@ -57,6 +57,7 @@ export default function ReviewCard(props) {
         }
         subheader={<span className="star p-0">{handleRating(tourDetail?.rating || 5)}</span>}
       />
+      {console.log('tourDetail.path', tourDetail.path)}
       <CardMedia className={classes.media} image={tourDetail.path} title="Paella dish" />
       <CardContent>
         <div>

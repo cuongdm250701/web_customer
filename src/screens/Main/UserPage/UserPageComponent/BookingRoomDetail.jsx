@@ -200,20 +200,25 @@ function BookingRoomDetail(props) {
               </span>
 
               <br />
-              <label className="mt-2">Số tiền đã cọc: </label>
-              <span className="ml-2">
-                {Number(orderDetail?.deposited)?.toLocaleString('vi', {
-                  currency: 'VND',
-                }) || 'Chưa cập nhật'}{' '}
-                VND
-              </span>
+              <label className="mt-2">Thông tin tài khoản: </label>
               <br />
+              <span className="ml-2">Quý khách vui lòng thanh toán qua số tài khoản: 107875448296</span>
+              <br />
+              <span className="ml-2">Ngân hàng: Vietinbank</span>
+              <br />
+
               <label className="mt-2">Số tiền còn lại:</label>
               <span className="ml-2">
                 {Number(orderDetail?.price - orderDetail?.deposited)?.toLocaleString('vi', {
                   currency: 'VND',
                 }) || 'Chưa cập nhật'}{' '}
                 VND
+              </span>
+              <br />
+              <label className="mt-2">Note: </label>
+              <span className="ml-2">
+                Quý khách lưu ý trên đây chỉ là số tiền tính theo đầu người, chi phí phát sinh thêm sẽ được phía quản
+                trị viên gọi điện trao đổi trực tiếp
               </span>
               <br />
               <label className="mt-2">Ảnh chuyển khoản</label>
